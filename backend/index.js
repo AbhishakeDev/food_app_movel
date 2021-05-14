@@ -14,10 +14,6 @@ const app = express();
 const PORT = process.env.PORT;
 app.use(express.json({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.send('Hello');
-});
-
 //Routes
 
 app.use('/api/hotels', hotelRoutes);
@@ -36,6 +32,10 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) =>
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
   );
+} else {
+  app.get('/', (req, res) => {
+    res.send('Hello');
+  });
 }
 
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
