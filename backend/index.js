@@ -11,11 +11,12 @@ dotenv.config();
 connectDB();
 
 const app = express();
-const PORT = 5000 || process.env.PORT;
+const PORT = process.env.PORT;
 app.use(express.json({ extended: false }));
-// app.get('/', (req, res) => {
-//   res.send('Hello');
-// });
+
+app.get('/', (req, res) => {
+  res.send('Hello');
+});
 
 //Routes
 
